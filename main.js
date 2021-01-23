@@ -6,13 +6,17 @@ const qItems = document.querySelector('.q_items');
 const qItem = document.querySelectorAll('.q_item');
 const qList = document.querySelectorAll('.q_list');
 
+const qHeader = document.querySelector('.q_header');
+const nameInput = document.querySelector('.name_input');
+let nameText = '';
+
 const btn = document.querySelectorAll('.btn');
 const resultObj = {};
 let lastPage3secDisplay = undefined;
 
-
 // q_slide 각 item 인덱스 번호 알아야함.
 let qIdx = 0;
+
 
 // idx 파악
 function goToQIdx(x) {
@@ -24,12 +28,12 @@ function goToQIdx(x) {
   } else if (qIdx === qItem.length - 1) {
     qIdx = qItem.length - 1;
     console.log("last")
-    // 애니메이션 실행
-    
   }
   qItems.style.transform = `translateX(${-(itemWidth) * qIdx}px)`;
+  fadeInElements();
 }
 
+// 첫화면 로딩
 goToQIdx(0);
 
 // btn 클릭시 q_slide next 이동
@@ -37,70 +41,47 @@ function nextQItems() {
   goToQIdx(1);
 }
 
-
 // 뒤로가기 클릭시 q_slide prev 이동
 function prevQItems() {
   goToQIdx(-1);
 }
 
-
-
-// index = 0;
-// 첫화면 로드시 text fade in
-// 시작하가 클릭하면 next
-qSlide.addEventListener('click',onClickQSlide);
-
-function onClickQSlide(e) {
-  // console.log(e.target.nodeName)
-  // prev
-  if (e.target.matches('.back_btn')) {
-    prevQItems();
-  }
-
-  // btn 클릭시 next
-  if (e.target.matches('.btn')) {
-    nextQItems();
-    findIdx();
-    console.log('클릭')
-  }
-
-  // 로고 클릭시
-  if(e.target.matches('.starbucks_logo')) {
-    nextQItems();
-    findIdx();
-  }
-
-
-  // 객체에 값 넣기
-  if(e.target.matches('.q_btn')) {
-    const key = e.target.dataset.key;
-    const value = e.target.dataset.value;
-
-    resultObj[key] = value;
-    console.log(resultObj);
-  }
+function showQHeader() {
+  qHeader.classList.add('on');
+}
+function hideQHeader() {
+  qHeader.classList.remove('on');
 }
 
 
 
-// Question Page Event
+
+
+// Question Page 인덱스 별 Event
 function findIdx() {
   
   // if (qIdx === 2) {
-  //   const nameInput = document.querySelector('.name_input');
-  //   // const nameInput = document.querySelector('.name_input');
-  //   // nameInput.focus();
-  //   if(nameInput.value) {
-  //     // console.log(qIdx + "찾음");
-      
-  //   }
+  //   nameInput.focus();
   //   return;
   // }
+  
+  if (qIdx === 3) {
+    showQHeader();
+  }
 
   if (qIdx === qItem.length - 1) {
     // q_slide 끄고 결과창 보여주기
-    lastPage3secDisplay = setTimeout(hideQSlidePage, 3000);
+    hideQHeader();
+    lastPage3secDisplay = setTimeout(hideQSlidePage, 5000);
     
+  }
+}
+
+function fadeInElements() {
+  let len = qItem[qIdx].children.length;
+  for(let i = 0; i < len; i++) {
+    qItem[qIdx].children[i].style.opacity = "1";
+    qItem[qIdx].children[i].style.transition = `opacity 1s ease ${i}s`;
   }
 }
 
@@ -131,9 +112,17 @@ function findIdx() {
 // 버튼 세개중에 하나에만 스타일 적용될 수 있도록 하기
 
 
+// 객체 생성후 값 기록
+function recordResult(e) {
+  const key = e.target.dataset.key;
+  const value = e.target.dataset.value;
+
+  resultObj[key] = value;
+  console.log(resultObj);
+}
 
 
-// 결과값 전달하기
+// 객체 결과값으로 음료 고르기
 let resultBeverage = '';
 function choiceBeverage() {
   if(resultObj.caffein === 'caffein' || resultObj.caffein === 'nomatter') {
@@ -151,7 +140,7 @@ function choiceBeverage() {
           return resultBeverage = '스타벅스 더블샷';
         } 
         else {
-          return resultBeverage = '바닐라크림 콜드브루';
+          return resultBeverage = '바닐라 크림 콜드 브루';
         }
       }
     } 
@@ -215,12 +204,16 @@ function choiceBeverage() {
   }
 }
 
+function showName() {
+  const resultUserName = document.querySelector('.result_user_name')
+  nameText += nameInput.value;
+  resultUserName.innerHTML = nameText;
+}
+
 
 
 
 // 결과창 띄우기
-
-
 function showResultBeverage() {
   const resultP = document.querySelector('.beverage_result');
   resultP.innerHTML = resultBeverage;
@@ -233,11 +226,46 @@ function showResultPage() {
   // 결과값 보여주기 
   choiceBeverage();
   showResultBeverage();
+  showName();
+  
   console.log('결과 실행')
 }
 
 function hideQSlidePage() {
   qSlide.style.display = 'none';
   showResultPage();
+}
+
+
+
+
+
+// 클릭이벤트 전이
+qSlide.addEventListener('click',onClickQSlide);
+
+function onClickQSlide(e) {
+  // console.log(e.target.nodeName)
+  // prev
+  if (e.target.matches('.back_btn')) {
+    prevQItems();
+  }
+
+  // btn 클릭시 next
+  if (e.target.matches('.btn')) {
+    nextQItems();
+    findIdx();
+    console.log('클릭')
+  }
+
+  // 로고 클릭시
+  if(e.target.matches('.starbucks_logo')) {
+    nextQItems();
+    findIdx();
+  }
+
+  // 객체에 key:value 값 입력하기
+  if(e.target.matches('.q_btn')) {
+    recordResult(e);
+  }
 }
 
