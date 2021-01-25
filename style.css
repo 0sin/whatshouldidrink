@@ -36,12 +36,12 @@ body {
 }
 
 section {
-  /* display: none; */
   position: relative;
-  width: 360px;
-  height: 640px;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
   word-break: keep-all;
+  overflow: hidden;
 }
 
 .q_slide {
@@ -52,17 +52,15 @@ section {
   width: 100%;
   height: 100%;
   display: flex;
-  transition: all 1s;
+  transition: transform 1s;
 }
 
 .q_item {
   width: 100%;
   height: 100%;
   flex-shrink: 0;
-  /* margin-right: 10px; */
-  padding: 120px 50px 20px;
+  padding: 100px 20px 40px;
   background-color: var(--main-bg-color);
-
   text-align: center;
 }
 
@@ -75,6 +73,7 @@ section {
   opacity: 0;
   transition: opacity 1s;
 }
+
 .q_header.on {
   opacity: 1;
 }
@@ -84,6 +83,7 @@ section {
   height: 50px;
   cursor: pointer;
 }
+
 .back_btn i,
 .back_btn span {
   pointer-events: none;
@@ -111,23 +111,27 @@ section {
   color: var(--black-color);
   border-radius: 15px;
   font-size: 20px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   cursor: pointer;
 }
-.btn:hover {
+.btn:hover,
+.btn:focus {
   background-color: var(--main-color);
   color: var(--white-color);
 }
-.btn:hover .num_circle {
+.btn:hover .num_circle,
+.btn:focus .num_circle {
   background-color: var(--white-color);
   color: var(--main-color);
 }
-.btn.active:active {
-  background-color: var(--result-bg-color);
-  color: var(--white-color);
-}
-.btn.active {
+.btn.inverse {
   background-color: var(--main-color);
   color: var(--white-color);
+}
+.btn.inverse:active {
+  background-color: var(--result-bg-color);
+  color: var(--white-color);
+  transform: scale(0.98);
 }
 
 
@@ -175,6 +179,7 @@ section {
   background-color: var(--white-color);
   color: var(--black-color);
   text-align: center;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   opacity: 0;
 }
 
@@ -234,6 +239,41 @@ section {
 }
 
 
+/* 결과 기다리는 페이지 */
+.waiting_page .coffee_illu {
+  animation: waitingAni 1s infinite;
+}
+.waiting_page .progressbar {
+  width: 200px;
+  height: 14px;
+  margin: 0 auto;
+  border: 2px solid var(--starbucks-color);
+  border-radius: 6px;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+.bar_width {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--starbucks-color);
+}
+
+@keyframes waitingAni {
+  0% {transform: rotate(2deg)}
+  50% {transform: rotate(-2deg)}
+  100% {transform: rotate(2deg)}
+}
+@keyframes waitingBar {
+  0% {transform: translateX(-100%)}
+  50% {transform: translateX(-70%)}
+  100% {transform: translateX(0)}
+}
+
+
+
 
 
 /* 결과 페이지 */
@@ -267,7 +307,7 @@ section {
 }
 
 .result_desc {
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
   font-size: 14px;
   color: var(--main-bg-color);
@@ -302,3 +342,25 @@ section {
   line-height: 16px;
 }
 
+
+
+@media screen and (min-width: 321px) {
+  .q_item {
+    padding: 120px 50px 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  section {
+    width: 360px;
+    height: 640px;
+    margin: 80px auto;
+    border-radius: 30px;
+  }
+  .q_item {
+    padding: 120px 50px 20px;
+  }
+  .result_page {
+    height: 100%;
+  }
+}

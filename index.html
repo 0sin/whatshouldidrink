@@ -23,14 +23,16 @@
       <li class="q_item">
         <img class="coffee_illu" src="./img/coffee.png" alt="coffee">
         <div class="intro_text">
-          <p>매일 먹는 아메리카노 말고 <br>
+          <p>
+            매일 먹는 아메리카노 말고
+            <br>
             다른게 마시고 싶어
           </p>
           <br>
           <p>그래서</p>
           <h1 class="title">오늘 뭐 마시지?</h1>
         </div>
-        <button type="button" class="btn active start_btn">시작하기</button>
+        <button type="button" class="btn inverse start_btn">시작하기</button>
       </li>
       <li class="q_item">
         <img class="coffee_illu" src="./img/coffee.png" alt="coffee">
@@ -50,7 +52,7 @@
           <p>주문자 이름은</p>
         </div>
         <input type="text" class="name_input" placeholder="입력 해주세요" minlength="1" maxlength="18">
-        <button type="button" class="btn active order_btn">주문하기</button>
+        <button type="button" class="btn inverse order_btn">주문하기</button>
       </li>
 
       <li class="q_item q_list">
@@ -77,16 +79,16 @@
       <li class="q_item q_list">
         <div class="questions">
           <h2><span>Q</span>2</h2>
-          <p>유제품은</p>
+          <p>우유는</p>
         </div>
         <div class="answers">
           <button type="button" class="btn q_btn btn1" data-key="milk" data-value="yes">
             <span class="num_circle">1</span>
-            <span class="answer">우유 많이</span>
+            <span class="answer">우유 좋아</span>
           </button>
           <button type="button" class="btn q_btn btn2" data-key="milk" data-value="no">
             <span class="num_circle">2</span>
-            <span class="answer">우유 없이</span>
+            <span class="answer">우유는 적거나 없게</span>
           </button>
           <button type="button" class="btn q_btn btn3" data-key="milk" data-value="nomatter">
             <span class="num_circle">3</span>
@@ -98,7 +100,7 @@
       <li class="q_item q_list">
         <div class="questions">
           <h2><span>Q</span>3</h2>
-          <p>오늘은 달달하게</p>
+          <p>오늘은 달달한게</p>
         </div>
         <div class="answers">
           <button type="button" class="btn q_btn btn1" data-key="sugar" data-value="yes">
@@ -107,7 +109,7 @@
           </button>
           <button type="button" class="btn q_btn btn2" data-key="sugar" data-value="no">
             <span class="num_circle">2</span>
-            <span class="answer">단건 싫어</span>
+            <span class="answer">많이 단건 싫어</span>
           </button>
           <button type="button" class="btn q_btn btn3" data-key="sugar" data-value="nomatter">
             <span class="num_circle">3</span>
@@ -119,16 +121,16 @@
       <li class="q_item q_list">
         <div class="questions">
           <h2><span>Q</span>4</h2>
-          <p>상큼한건</p>
+          <p>과일맛이 나는건</p>
         </div>
         <div class="answers">
           <button type="button" class="btn q_btn btn1" data-key="citrus" data-value="yes">
             <span class="num_circle">1</span>
-            <span class="answer">상큼하게</span>
+            <span class="answer">좋지</span>
           </button>
           <button type="button" class="btn q_btn btn2" data-key="citrus" data-value="no">
             <span class="num_circle">2</span>
-            <span class="answer">상큼한건 싫어</span>
+            <span class="answer">내키지 않아</span>
           </button>
           <button type="button" class="btn q_btn btn3" data-key="citrus" data-value="nomatter">
             <span class="num_circle">3</span>
@@ -181,10 +183,13 @@
       </li> -->
       
       
-      <li class="q_item">
-        <img class="coffee_illu" src="./img/cup.png" alt="coffee">
+      <li class="q_item waiting_page">
+        <img class="coffee_illu" src="./img/coffee.png" alt="coffee">
         <div class="intro_text">
-          <p>결과 기다리는 중</p>
+          <p>결과 기다리는 중...</p>
+        </div>
+        <div class="progressbar">
+          <div class="bar_width"></div>
         </div>
       </li>
     </ul>
@@ -194,13 +199,14 @@
     </footer>
   </section>  
 
+  <!-- 결과 페이지 -->
   <section class="result_page">
-    <p class="recommend_phrase"><span class="result_user_name">영신</span>님께<br>추천하는 오늘의 음료는</p>
-    <p class="beverage_result">제주 유기농 말차로 만든 라떼</p>
-    <a href="#">
-      <img src="./img/starbucks/today's_coffee_hot.jpg" alt="americano" class="result_img">
+    <p class="recommend_phrase"><span class="result_user_name">커피광인</span>님께<br>추천하는 오늘의 음료는</p>
+    <p class="beverage_result">아메리카노</p>
+    <a href="https://www.starbucks.co.kr/menu/drink_list.do">
+      <img src="./img/starbucks/todays_coffee_hot.jpg" alt="americano" class="result_img">
     </a>
-    <p class="result_desc">콜드 브루에 더해진 바닐라 크림으로 깔끔하면서 달콤한 콜드 브루를 새롭게 즐길 수 있는 음료</p>
+    <p class="result_desc">음료 설명</p>
     <div class="socials">
       <p>테스트 공유하기</p>
       <div class="socials_wrap">
@@ -220,10 +226,9 @@
     </div>
     <p class="copyright">
       developer 0sin
+      <a href="mailto:0-sin@naver.com">메일 보내기</a>
       <br>
       Copyright 2021. 0-sin All rights reserved.
-      <br>
-      <a href="mailto:0-sin@naver.com">메일 보내기</a>
     </p>
   </section>
 </body>
