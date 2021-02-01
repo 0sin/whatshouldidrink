@@ -8,6 +8,7 @@
   <script src="./main.js" defer></script>
   <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <link rel="shortcut icon" href="./img/coffee.png" type="image/x-icon">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <header class="q_header">
       <button type="button" class="back_btn">
         <i class="fas fa-reply"></i>
-        <span>뒤로가기</span>
+        <span>BACK</span>
       </button>
     </header>
     
@@ -25,10 +26,10 @@
         <div class="intro_text">
           <p>
             매일 먹는 아메리카노 말고
-            <br>
+            <br/>
             다른게 마시고 싶어
           </p>
-          <br>
+          <br/>
           <p>그래서</p>
           <h1 class="title">오늘 뭐 마시지?</h1>
         </div>
@@ -184,24 +185,28 @@
       
       
       <li class="q_item waiting_page">
-        <img class="coffee_illu" src="./img/coffee.png" alt="coffee">
+        <img class="coffee_illu" src="./img/starbucks_cup.png" alt="coffee">
         <div class="intro_text">
           <p>결과 기다리는 중...</p>
         </div>
-        <div class="progressbar">
-          <div class="bar_width"></div>
+        <div class="w_progress_bar">
+          <div class="w_bar_width"></div>
         </div>
       </li>
     </ul>
 
     <footer class="q_footer">
+      <div class="q_progress_bar">
+        <span class="q_bar_gauge"></span>
+      </div>
       <span class="copy_title">What should I drink today</span>
+      <span class="copy_brand_name">in brand</span>
     </footer>
   </section>  
 
   <!-- 결과 페이지 -->
   <section class="result_page">
-    <p class="recommend_phrase"><span class="result_user_name">커피광인</span>님께<br>추천하는 오늘의 음료는</p>
+    <p class="recommend_phrase"><span class="result_user_name">mad coffee</span>님께<br/>추천하는 오늘의 음료는</p>
     <p class="beverage_result">아메리카노</p>
     <a href="https://www.starbucks.co.kr/menu/drink_list.do">
       <img src="./img/starbucks/todays_coffee_hot.jpg" alt="americano" class="result_img">
@@ -225,9 +230,10 @@
       </div>
     </div>
     <p class="copyright">
-      developer 0sin
-      <a href="mailto:0-sin@naver.com">메일 보내기</a>
-      <br>
+      developer 0sin 
+      <br/>
+      <a href="mailto:0-sin@naver.com"><i class="fas fa-envelope"></i>메일 보내기</a>
+      <br/>
       Copyright 2021. 0-sin All rights reserved.
     </p>
   </section>
