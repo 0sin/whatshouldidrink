@@ -18,7 +18,7 @@ let lastPage3secDisplay = undefined;
 let brandName = undefined;
 
 
-// idx 파악
+// qIdx 이동
 function goToQIdx(x) {
   let itemWidth = qItem[qIdx].clientWidth;
   qIdx += x;
@@ -33,12 +33,12 @@ function goToQIdx(x) {
   fadeInElements();
 }
 
-// btn 클릭시 q_slide next 이동
+// next 이동
 function nextQItems() {
   goToQIdx(1);
 }
 
-// 뒤로가기 클릭시 q_slide prev 이동
+// prev 이동
 function prevQItems() {
   goToQIdx(-1);
 }
@@ -130,7 +130,7 @@ function findIdx() {
 
 
 
-// RESULT ---------------------------------------------------------
+// RESULT -------------------------------------------
 // 객체 생성후 값 기록
 function recordResult(e) {
   const key = e.target.dataset.key;
@@ -227,7 +227,12 @@ function choiceBeverage() {
 function showName() {
   const resultUserName = document.querySelector('.result_user_name')
   nameText += nameInput.value;
-  resultUserName.innerHTML = nameText;
+
+  if(nameText === '') {
+    resultUserName.innerHTML = '익명';
+  } else {
+    resultUserName.innerHTML = nameText;
+  }
 }
 
 function showResultImgAndDesc() {
@@ -374,7 +379,6 @@ function hideQSlidePage() {
 qSlide.addEventListener('click',onClickQSlide);
 
 function onClickQSlide(e) {
-  // console.log(e.target.nodeName)
   // prev
   if (e.target.matches('.back_btn')) {
     prevQItems();
@@ -407,3 +411,20 @@ function firstPageLoad() {
   goToQIdx(0);
 }
 window.onload = firstPageLoad;
+
+
+
+// Test URL share btn
+const urlShareBtn = document.querySelector('.share_btn');
+urlShareBtn.addEventListener('click', () => {
+  let textArea = document.createElement('textarea');
+  document.body.appendChild(textArea);
+  textArea.value = document.location.href; // 현재 URL을 세팅
+
+  textArea.select();  // 해당 값이 선택되도록 select() 합니다
+  document.execCommand('copy'); // 클립보드에 복사합니다.
+  document.body.removeChild(textArea);
+
+  alert("URL이 클립보드에 복사되었습니다"); 
+})
+

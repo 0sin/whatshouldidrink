@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
-  <title>What shoul I drink today</title>
+  <title>What should I drink today</title>
   <script src="./main.js" defer></script>
   <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -40,12 +40,15 @@
         <div class="intro_text">
           <p>어디에서 마실까?</p>
         </div>
-        <button type="button" class="brand_btn">
-          <img src="img/starbucks_logo.png" alt="starbucks_logo" class="starbucks_logo">
-        </button>
-        <!-- <button type="button" class="brand_btn">
-          <img src="img/ediya_logo.png" alt="ediya_logo">
-        </button> -->
+        <div class="brand_btn_wrap">
+          <button type="button" class="brand_btn">
+            <img src="img/ediya_logo.png" alt="ediya logo" class="ediya_logo">
+            <div class="disable"></div>
+          </button>
+          <button type="button" class="brand_btn">
+            <img src="img/starbucks_logo.png" alt="starbucks logo" class="starbucks_logo">
+          </button>
+        </div>
       </li>
       <li class="q_item">
         <img class="coffee_illu" src="./img/coffee.png" alt="coffee">
@@ -85,7 +88,7 @@
         <div class="answers">
           <button type="button" class="btn q_btn btn1" data-key="milk" data-value="yes">
             <span class="num_circle">1</span>
-            <span class="answer">우유 좋아</span>
+            <span class="answer">우유 많이</span>
           </button>
           <button type="button" class="btn q_btn btn2" data-key="milk" data-value="no">
             <span class="num_circle">2</span>
@@ -138,52 +141,7 @@
             <span class="answer">상관없어</span>
           </button>
         </div>
-      </li>
-
-      <!-- <li class="q_item q_list">
-        <div class="questions">
-          <h2><span>Q</span>2</h2>
-          <p>양은 어떻게?</p>
-        </div>
-        <div class="answers">
-          <button type="button" class="btn q_btn btn1" data-key="size" data-value="grande">
-            <span class="num_circle">1</span>
-            <span class="answer">많을수록 좋아</span>
-          </button>
-          <button type="button" class="btn q_btn btn2" data-key="size" data-value="tall">
-            <span class="num_circle">2</span>
-            <span class="answer">보통 사이즈로</span>
-          </button>
-          <button type="button" class="btn q_btn btn3" data-key="size" data-value="shot">
-            <span class="num_circle">3</span>
-            <span class="answer">적을수록 좋아</span>
-          </button>
-        </div>
-      </li> -->
-      
-      
-      <!-- <li class="q_item q_list">
-        <div class="questions">
-          <h2><span>Q</span>5</h2>
-          <p>음료 온도는</p>
-        </div>
-        <div class="answers">
-          <button type="button" class="btn q_btn btn1" data-key="temperature" data-value="hot">
-            <span class="num_circle">1</span>
-            <span class="answer">따뜻하게</span>
-          </button>
-          <button type="button" class="btn q_btn btn2" data-key="temperature" data-value="cold">
-            <span class="num_circle">2</span>
-            <span class="answer">얼어 죽어도 아이스</span>
-          </button>
-          <button type="button" class="btn q_btn btn3" data-key="temperature" data-value="nomatter">
-            <span class="num_circle">3</span>
-            <span class="answer">날씨에 따라 다르게</span>
-          </button>
-        </div>
-      </li> -->
-      
-      
+      </li>    
       <li class="q_item waiting_page">
         <img class="coffee_illu" src="./img/starbucks_cup.png" alt="coffee">
         <div class="intro_text">
@@ -213,7 +171,7 @@
     </a>
     <p class="result_desc">음료 설명</p>
     <div class="socials">
-      <p>테스트 공유하기</p>
+      <button type="button" class="share_btn">테스트 공유하기</button>
       <div class="socials_wrap">
         <a href="#" class="social facebook">
           <i class="fab fa-facebook-f"></i>
@@ -232,7 +190,9 @@
     <p class="copyright">
       developer 0sin 
       <br/>
-      <a href="mailto:0-sin@naver.com"><i class="fas fa-envelope"></i>메일 보내기</a>
+      <a href="mailto:0-sin@naver.com">
+        <i class="fas fa-envelope"></i> 메일 보내기
+      </a>
       <br/>
       Copyright 2021. 0-sin All rights reserved.
     </p>
